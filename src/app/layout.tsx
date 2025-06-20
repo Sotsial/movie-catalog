@@ -30,6 +30,7 @@ export default function RootLayout({
     <html lang="ru" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-screen antialiased`}
+        cz-shortcut-listen="true"
       >
         <ReactQueryProvider>
           <ThemeProvider

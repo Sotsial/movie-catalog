@@ -31,29 +31,31 @@ export default function MovieDisplayArea({
     error: searchError,
   } = useInfiniteQuery({
     queryKey: ["searchMovies", currentSearchQuery],
-    queryFn: async ({ pageParam }) => {
-      const result = await searchMovies({
+    queryFn: async ({ pageParam = 1 }) => {
+      const queryParams = new URLSearchParams({
         s: currentSearchQuery,
         page: pageParam.toString(),
       });
 
-      if (result.Response === "False") {
-        if (result.Error === "Movie not found!") {
+      const response = await fetch(`/api/search?${queryParams.toString()}`);
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+
+      if (data.Response === "False") {
+        if (data.Error === "Movie not found!") {
           return {
             Search: [],
             totalResults: "0",
             Response: "True",
-            Error: result.Error,
+            Error: data.Error,
           };
         }
-
-        throw new Error(result.Error || "Unknown OMDb API error");
+        throw new Error(data.Error || "Unknown API error");
       }
-      return {
-        Search: result.Search || [],
-        totalResults: result.totalResults || "0",
-        Response: "True",
-      };
+      return data;
     },
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages) => {
