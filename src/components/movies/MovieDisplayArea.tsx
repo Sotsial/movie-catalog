@@ -1,6 +1,5 @@
 "use client";
 
-import { searchMovies } from "@/lib/omdbService";
 import { MovieShort } from "@/lib/types";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { useState } from "react";

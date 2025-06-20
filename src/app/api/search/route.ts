@@ -1,4 +1,3 @@
-// src/app/api/search/route.ts
 import { searchMovies } from "@/lib/omdbService";
 import { NextResponse } from "next/server";
 
@@ -20,10 +19,9 @@ export async function GET(request: Request) {
   };
 
   try {
-    // Здесь мы безопасно вызываем функцию, которая использует серверный API_KEY
     const results = await searchMovies(params);
     return NextResponse.json(results);
-  } catch (error) {
+  } catch {
     return NextResponse.json(
       { Error: "Failed to fetch movies" },
       { status: 500 }
