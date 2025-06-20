@@ -59,12 +59,14 @@
 
 1.  Клонируйте репозиторий:
     ```bash
-    git clone <URL_вашего_репозитория>
+    git clone https://github.com/Sotsial/movie-catalog.git
     ```
 2.  Перейдите в директорию проекта:
+
     ```bash
-    cd <название_папки_проекта>
+    cd movie-catalog
     ```
+
 3.  Установите зависимости:
     ```bash
     npm install
@@ -75,8 +77,8 @@
 1.  Создайте файл `.env.local` в корневой директории проекта.
 2.  Добавьте в него ваши API ключи:
     ```env
-    NEXT_PUBLIC_OMDB_API_KEY=ВАШ_КЛЮЧ_OMDB
-    NEXT_PUBLIC_TMDB_API_KEY=ВАШ_КЛЮЧ_TMDB_V3_AUTH
+    OMDB_API_KEY=ВАШ_КЛЮЧ_OMDB
+    TMDB_API_KEY=ВАШ_КЛЮЧ_TMDB_V3_AUTH
     ```
     - **OMDb API ключ** [http://www.omdbapi.com/apikey.aspx](http://www.omdbapi.com/apikey.aspx)
     - **TMDB API ключ (v3 auth)** [https://www.themoviedb.org/](https://www.themoviedb.org/)

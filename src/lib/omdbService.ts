@@ -1,6 +1,6 @@
 import { MovieDetails, SearchResults } from "./types";
 
-const API_KEY = process.env.NEXT_PUBLIC_OMDB_API_KEY;
+const API_KEY = process.env.OMDB_API_KEY;
 const BASE_URL = `https://www.omdbapi.com/?apikey=${API_KEY}`;
 
 interface SearchParams {
